@@ -37,11 +37,14 @@ namespace LoginRedes
 
 
             services.AddAuthentication().AddFacebook(facebookOptions=>{
-                facebookOptions.AppId = Configuration["Autentication:Facebook:AppId"];
-                facebookOptions.AppSecret = Configuration["Autentication:Facebook:AppSecret"];
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
             });
 
-
+            services.AddAuthentication().AddGoogle(googleOptions=>{
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];//Estamos passando o id e a chave secreta, quando clica no botão é necessário já ter preestabelecida a relação com o Google. Usa-se o mecanismo para realização do Login com o Google.
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
 
 
 
